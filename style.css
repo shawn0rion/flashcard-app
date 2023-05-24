@@ -1,0 +1,11 @@
+.card{
+    overflow: hidden;
+}
+
+.card .answer{
+    max-height: 0px;
+}
+
+.card.show .answer{
+    max-height: 300px;
+}
