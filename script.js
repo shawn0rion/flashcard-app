@@ -43,13 +43,31 @@ class Flashcard {
 
 
 const deck = new Deck();
-const form = document.querySelector('.new-flashcard');
-form.addEventListener('submit', event => {
+const container = document.querySelector('.container');
+const newFlashcardBtn = document.querySelector('.new-flashcard-btn');
+const newFlashcardForm = document.querySelector('.new-flashcard-form');
+
+// handle new card events
+newFlashcardBtn.addEventListener('click', event => {
+    newFlashcardForm.classList.toggle('hide')
+    document.body.style.overflowY = 'hidden';
+})
+const closeFormBtn = document.querySelector('.close-form-btn');
+closeFormBtn.addEventListener('click', event => {
+    newFlashcardForm.classList.add('hide');
+    container.classList.remove('show-form');
+    document.body.style.overflowY = 'scroll';
+})
+newFlashcardForm.addEventListener('submit', event => {
     event.preventDefault();
+    // hide form
+    newFlashcardForm.classList.add('hide');
+    document.body.style.overflowY = 'scroll';
+
     const question = event.target.querySelector('#question-input').value;
     const answer = event.target.querySelector('#answer-input').value;
-    console.log(question, answer)
     const card = deck.newFlashcard(question, answer);
+    console.log(card);
     if (card !== undefined){
         renderCard(card);
     }
@@ -66,6 +84,8 @@ function renderCard(cardObject){
     answer.className = 'answer';
     answer.textContent = cardObject.answer;
     const showHideBtn = document.createElement('button');
+    showHideBtn.className = 'show-hide-btn';
+    showHideBtn.textContent = 'Show / Hide';
     showHideBtn.addEventListener('click', event => {
         if (cardElement.classList.contains('show')){
             cardElement.classList.remove('show');
@@ -80,3 +100,5 @@ function renderCard(cardObject){
     cardElement.appendChild(answer);
     deckElement.appendChild(cardElement);
 }
+
+renderCard(deck.newFlashcard('james jean book', 'pareidolia'));
