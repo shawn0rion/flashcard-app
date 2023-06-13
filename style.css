@@ -1,4 +1,14 @@
-
+:root{
+    --bg-white: #fff;
+    --bg-light: #f9f9f9;
+    --bg-light-grey: #eee;
+    --bg-grey: #ddd;
+    --font-light: #999;
+    --font-grey: #555;
+    --font-dark: #222;
+    --footer-height: 80px;
+    --header-height: 40px;
+}
 *{
     box-sizing: border-box;
     margin: 0;
@@ -6,6 +16,9 @@
 body{
     overflow-y: scroll;
     overflow-x: hidden;
+}
+li{
+    list-style: none;
 }
 
 .container{
@@ -18,11 +31,68 @@ body{
     overflow-y: hidden;
 }
 
-.new-flashcard-form.hide{
-    display: none;
+.container > .header{
+    margin: 0px auto;
+    height: var(--header-height);
+    width: 200px;
+    background-color: var(--bg-white);
+    
+    display: flex;
+    justify-content: space-around;
 }
 
-.new-flashcard-form {
+.container > .header > button{
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+}
+
+.home-container{
+    padding: 40px 0;
+    background-color: var(--bg-light);
+    height: calc(100vh - var(--footer-height) - var(--header-height));
+}
+
+.decks-container{
+    background-color: var(--bg-white);
+    width: 500px;
+    border:  1px solid var(--bg-grey);
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    margin: 0 auto;
+}
+
+.deck{
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.deck .title{
+    /* width: 100%; */
+    background-color: transparent;
+    border: 0;
+}
+
+.deck .title:hover{
+    text-decoration: underline;
+}
+
+.deck:hover{
+    background-color: var(--bg-grey);
+}
+
+#deck-form{
+    background-color: var(--bg-white);
+    position: absolute;
+    padding: 20px;
+    border: 1px solid var(--bg-grey);
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+#card-form {
     position: absolute;
     top: 0;
     left: 0;
@@ -34,14 +104,6 @@ body{
     width: 100%;
     background-color: #fff;
     overflow: hidden;
-}
-
-.deck{
-    display: flex; 
-    flex-direction: column;
-    /* align-items: center; */
-    width: 100%;
-    padding: 80px;
 }
 
 .card{
@@ -70,4 +132,56 @@ body{
 .card.show .answer{
     display: block;
     max-height: 300px;
+}
+
+footer{
+    height: var(--footer-height);
+    display: flex;
+    justify-content: space-between;
+
+    background-color: var(--bg-light);
+    padding: 20px;
+    margin-top: auto;
+}
+
+footer > *{
+    min-width: 60px;
+}
+
+.hide{
+    display: none;
+}
+
+.quiz-container{
+    padding: 10px 0;
+    height: calc(100vh - var(--footer-height) - var(--header-height));
+    background-color: var(--bg-white);
+}
+
+.question{
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.answer{
+    text-align: center;
+    width: 100%;
+    padding-top: 10px;
+    display: none;
+}
+
+.qna.show .question{
+    border-bottom: 2px solid #999;
+}
+
+.qna.show .answer{
+    display: block;
+}
+
+#card-form.hide{
+    display: none;
+}
+
+#deck-form.hide{
+    display: none;
 }

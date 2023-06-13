@@ -9,14 +9,53 @@
 </head>
 <body>
     <div class="container">
-        <button class="new-flashcard-btn">add flashcard</button>
-        <form class="new-flashcard-form hide">
+        <header class="header">
+            <button id="view-decks">Decks</button>
+            <button id="add-card">Add</button>
+        </header>
+        <div class="home-container hide">
+            <div class="decks-container">
+                <div class="header">
+                    <p>Deck</p>
+                </div>
+                <ul class="decks">
+                    <li class="deck">
+                        <button class="title">title</button>
+                        <button class="deck-settings">cog</button>
+                    </li>
+                </ul>
+                
+                <!-- add cards studied + time per card stats -->
+            </div>
+
+        </div>
+        <form id="card-form" class="hide">
+            <div class="form-header">
+                <p>Deck: </p>
+                <select name="" id="deck-select">
+                    <option value="test deck">test deck</option>
+                </select>
+            </div>
             <button class="close-form-btn">x</button>
             <input type="text" name="" id="question-input">
             <input type="text" name="" id="answer-input">
             <button type="submit">create card</button>
         </form>
-        <div class="deck"></div>
+        <div class="quiz-container">
+            <div class="qna show">
+                <div class="question">Q</div>
+                <div class="answer">A</div>
+            </div>
+
+        </div>
+        <form action="" id="deck-form" class="hide">
+            <p>New deck name:</p>
+            <input type="text" name="" id="deck-name">
+            <button class="close-form">X</button>
+            <button class="submit-form">OK</button>
+        </form>
+        <!-- this is footer for home-container -->
+        <footer></footer>
     </div>
     <script src="script.js"></script>
 </body>
